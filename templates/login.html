@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Internship Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #004080;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 95%;
+            padding: 12px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color:#002b5c;
+        }
+
+        .flash {
+            /* color: red; */
+            text-align: center;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .back-link a {
+            color: #004080;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            color: crimson;
+            text-decoration: underline;
+        }
+         .success {
+            color: rgb(26, 233, 26);
+        }
+
+        .warning {
+            color:rgba(255, 225, 0, 0.945);
+        }
+
+        .danger{
+            color:red;
+        }
+        .info{
+            color: dodgerblue
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Login</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash {{category}}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="back-link">
+            <a href="{{ url_for('home') }}">&#8592; Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
+
